@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 #include <limits>
 int main (int argc, char *argv[]) {
   unsigned long long numero;
