@@ -41,7 +41,7 @@ int main (int argc, char *argv[]) {
     if (numero == 1) break;
     cantidad++;
     if (numero % 2 == 0) {
-      numero = numero / 2;
+      numero /= 2;
     }
     else {
       if (numero > maximo / 3) {
