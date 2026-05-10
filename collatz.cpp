@@ -7,7 +7,7 @@ int main (int argc, char *argv[]) {
   unsigned long long cantidad = 1;
   const unsigned long long maximo = std::numeric_limits<unsigned long long>::max() ;
   if (argc > 1) {
-    numero = std::stoi(argv[1]);
+    numero = std::stoull(argv[1]);
   } else {
       if (isatty(STDIN_FILENO)) {
        std::cout << "Ingresa un numero entero: ";
