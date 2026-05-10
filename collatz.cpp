@@ -7,15 +7,29 @@ int main (int argc, char *argv[]) {
   unsigned long long cantidad = 1;
   const unsigned long long maximo = std::numeric_limits<unsigned long long>::max() ;
   if (argc > 1) {
-    numero = std::stoull(argv[1]);
+    try {
+      numero = std::stoull(argv[1]);
+    }
+    catch (const std::invalid_argument&) {
+      std::cerr << "Argumento invalido";
+      return 1;
+    }
+    catch (const std::out_of_range&) {
+      std::cerr << "Número fuera de rango";
+      return 1;
+    };
   } else {
       if (isatty(STDIN_FILENO)) {
        std::cout << "Ingresa un numero entero: ";
       }
       while(!(std::cin >> numero)) {
-      std::cout << "Error, ese no es un numero valido, prueba con otro número: ";
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        if (std::cin.eof()) {
+          std::cerr << "No se recibio un numero valido\n";
+                return 1;
+        }
+        std::cout << "Error, ese no es un numero valido, prueba con otro número: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
      }
   
     }
@@ -25,7 +39,7 @@ int main (int argc, char *argv[]) {
   while (true) {
     std::cout << cantidad << ".- " << numero << "\n";
     if (numero == 1) break;
-    cantidad = cantidad + 1;
+    cantidad++;
     if (numero % 2 == 0) {
       numero = numero / 2;
     }
