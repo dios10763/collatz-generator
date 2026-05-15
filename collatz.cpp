@@ -27,7 +27,7 @@ int main (int argc, char *argv[]) {
           std::cerr << "No se recibio un numero valido\n";
                 return 1;
         }
-        std::cout << "Error, ese no es un numero valido, prueba con otro número: ";
+        std::cerr << "Error, ese no es un numero valido, prueba con otro número: ";
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
      }
@@ -45,14 +45,14 @@ int main (int argc, char *argv[]) {
     }
     else {
       if (numero > maximo / 3) {
-        std::cout << "Overflow detectado mientras se realizaba la operación de multiplicación\n";
+        std::cerr << "Overflow detectado mientras se realizaba la operación de multiplicación\n";
         return 1;
       }
 
       unsigned long long temp = numero * 3;
 
       if (temp > maximo -1) {
-        std::cout << "Overflow detectado mientras se realizaba la operación de suma\n";
+        std::cerr << "Overflow detectado mientras se realizaba la operación de suma\n";
         return 1;
       }
       numero = temp + 1;
