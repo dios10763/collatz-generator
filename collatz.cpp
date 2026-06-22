@@ -3,8 +3,8 @@
 #include <string>
 #include <unistd.h>
 int main (int argc, char *argv[]) {
-  unsigned long long numero;
-  unsigned long long cantidad = 1;
+  unsigned long long numero {};
+  unsigned long long cantidad {1};
   const unsigned long long maximo = std::numeric_limits<unsigned long long>::max() ;
   if (argc > 1) {
     try {
