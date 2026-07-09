@@ -9,7 +9,7 @@ bool tomar_argumento(int argc, char **argv, unsigned long long *ptr_numero) {
       *ptr_numero = std::stoull(argv[1]);
       return true;
     } catch (const std::invalid_argument &) {
-      std::cerr << "Argumento invalido";
+      std::cerr << "Argumento invalido\n";
       return false;
     } catch (const std::out_of_range &) {
       std::cerr << "Numero fuera de rango";
@@ -20,11 +20,11 @@ bool tomar_argumento(int argc, char **argv, unsigned long long *ptr_numero) {
 }
 bool tomar_input(unsigned long long *ptr_numero) {
   if (isatty(STDIN_FILENO)) {
-    std::cout << "Ingresa un numero entero";
+    std::cout << "Ingresa un numero entero: ";
   }
   while (!(std::cin >> *ptr_numero)) {
     if (std::cin.eof()) {
-      std::cerr << "No se recibio un numero valido";
+      std::cerr << "No se recibio un numero valido\n";
       return false;
     }
     std::cerr << "Overflow detectado mientras se realizaba la operación de "
